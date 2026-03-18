@@ -10,6 +10,7 @@
 
   <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
   <!-- CSS propio -->
   <link rel="stylesheet" href="css/style.css">
@@ -19,7 +20,7 @@
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark app-navbar">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">ITPM ADMINISTRACION DE CUENTAS</a>
+    <a class="navbar-brand" href="#">ITPM registro academico</a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
       <span class="navbar-toggler-icon"></span>
@@ -51,55 +52,203 @@
     <aside id="sidebar" class="col-md-3 col-lg-2 p-4">
       <h3 class="sidebar-title">HERRAMIENTAS</h3>
       <ul class="nav flex-column sidebar-links">
-        <li class="nav-item"><a class="nav-link active" href="#">INICIO</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">USUARIOS</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">SOPORTE</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">CONTACTO</a></li>
+        <li class="nav-item"><a class="nav-link active" href="#" data-view="inicio">INICIO</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-view="usuarios">USUARIOS</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-view="soporte">SOPORTE</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-view="contacto">CONTACTO</a></li>
       </ul>
     </aside>
 
     <!-- CONTENIDO -->
     <main class="col-md-9 col-lg-10 d-flex align-items-center content-area p-4 p-lg-5">
       <div class="container-fluid">
-        <div class="row justify-content-center align-items-center">
-          <div class="col-12 col-md-10 col-lg-6">
-            <section class="register-card">
-              <form class="row g-3">
-                <div class="col-12">
-                  <h2>Registro de Usuarios</h2>
-                </div>
-
-                <div class="col-12">
-                  <!-- FORMULARIO -->
-                  <div class="mb-3">
-                    <label for="nombre" class="form-label">Nombre completo</label>
-                    <input id="nombre" type="text" class="form-control is-valid" value="Ana Vargas" required>
-                    <div class="valid-feedback">Nombre valido.</div>
+        <section id="vistaInicio" class="content-view">
+          <div class="row justify-content-center align-items-center g-4">
+            <div class="col-12 col-xl-10">
+              <article class="home-card p-4 p-lg-5">
+                <div class="row align-items-center g-4">
+                  <div class="col-12 col-lg-5">
+                    <img
+                      src="https://itpm.edu.bo/wp-content/uploads/2023/02/WhatsApp-Image-2023-02-10-at-08.58.12.jpeg"
+                      class="img-fluid rounded-4 home-image"
+                      alt="Institucion educativa y gestion administrativa"
+                    >
                   </div>
-
-                  <div class="mb-3">
-                    <label for="correo" class="form-label">Correo corporativo</label>
-                    <input id="correo" type="email" class="form-control is-valid" value="ana.vargas@empresa.com" required>
-                    <div class="valid-feedback">Correo verificado.</div>
-                  </div>
-
-                  <div class="mb-0">
-                    <label for="password" class="form-label">Contraseña</label>
-                    <input id="password" type="password" class="form-control" placeholder="Minimo 8 caracteres">
+                  <div class="col-12 col-lg-7">
+                    <h2 class="mb-3">Bienvenidos al Sistema Administrativo ITPM</h2>
+                    <p class="home-text mb-0">
+                      Nuestra institucion educativa impulsa una formacion integral basada en excelencia academica,
+                      innovacion y valores. Desde esta plataforma se administra el registro de estudiantes,
+                      optimizando procesos y mejorando la atencion a toda la comunidad educativa.
+                    </p>
                   </div>
                 </div>
-
-                <div class="col-12">
-                  <!-- BOTONES -->
-                  <div class="d-flex flex-wrap gap-2">
-                    <button type="submit" class="btn btn-primary">Ingresar</button>
-                    <button type="button" class="btn btn-danger" disabled>Cancelar</button>
-                  </div>
-                </div>
-              </form>
-            </section>
+              </article>
+            </div>
           </div>
-        </div>
+        </section>
+
+        <section id="vistaUsuarios" class="content-view d-none">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-md-10 col-lg-6">
+              <section class="register-card">
+                <form id="registroForm" class="row g-3">
+                  <div class="col-12">
+                    <h2>Registro de Estudiantes</h2>
+                  </div>
+
+                  <div class="col-12">
+                    <!-- FORMULARIO -->
+                    <div class="mb-3">
+                      <label for="nombre" class="form-label">Nombre completo</label>
+                      <input id="nombre" type="text" class="form-control" value="Ana Vargas" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñÜü ]+" required>
+                      <div class="valid-feedback">Nombre valido.</div>
+                      <div class="invalid-feedback">Solo se permiten letras y espacios.</div>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="direccion" class="form-label">Direccion</label>
+                      <input id="direccion" type="text" class="form-control" placeholder="Ej. Av. Principal 123" required>
+                      <div class="valid-feedback">Direccion valida.</div>
+                      <div class="invalid-feedback">Ingresa una direccion valida.</div>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="ci" class="form-label">C.I.</label>
+                      <input id="ci" type="text" class="form-control" inputmode="numeric" pattern="[0-9]+" maxlength="12" placeholder="Solo numeros" required>
+                      <div class="valid-feedback">C.I. valido.</div>
+                      <div class="invalid-feedback">El C.I. debe contener solo numeros.</div>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="correo" class="form-label">Correo corporativo</label>
+                      <input id="correo" type="email" class="form-control is-valid" value="ana.vargas@empresa.com" required>
+                      <div class="valid-feedback">Correo verificado.</div>
+                    </div>
+
+                    <div class="mb-0">
+                      <label for="password" class="form-label">Contraseña</label>
+                      <input id="password" type="password" class="form-control" placeholder="Minimo 8 caracteres">
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <!-- BOTONES -->
+                    <div class="d-flex flex-wrap gap-2">
+                      <button type="submit" class="btn btn-primary">Guardar</button>
+                      <button type="button" class="btn btn-danger" disabled>Cancelar</button>
+                    </div>
+                  </div>
+                </form>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="vistaSoporte" class="content-view d-none">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-lg-8">
+              <section class="support-card p-4 p-lg-5">
+                <h2 class="mb-3">Centro de Soporte</h2>
+                <p class="support-text mb-4">
+                  En esta seccion puedes registrar quejas, reclamos o contactar con soporte tecnico.
+                  Indica si deseas respuesta mediante chat o mediante formulario para recibir atencion oportuna.
+                </p>
+
+                <form id="soporteForm" class="row g-3">
+                  <div class="col-12 col-md-6">
+                    <label for="tipoSoporte" class="form-label">Tipo de solicitud</label>
+                    <select id="tipoSoporte" class="form-select" required>
+                      <option value="" selected disabled>Selecciona una opcion</option>
+                      <option value="queja">Queja</option>
+                      <option value="reclamo">Reclamo</option>
+                      <option value="soporte">Soporte tecnico</option>
+                    </select>
+                  </div>
+
+                  <div class="col-12 col-md-6">
+                    <label for="correoSoporte" class="form-label">Correo de contacto</label>
+                    <input id="correoSoporte" type="email" class="form-control" placeholder="ejemplo@correo.com" required>
+                  </div>
+
+                  <div class="col-12">
+                    <label for="detalleSoporte" class="form-label">Descripcion del caso</label>
+                    <textarea id="detalleSoporte" class="form-control" rows="4" placeholder="Escribe el detalle de tu solicitud" required></textarea>
+                  </div>
+
+                  <div class="col-12">
+                    <label class="form-label d-block">Respuesta solicitada</label>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="metodoRespuesta" id="respuestaChat" value="chat" required>
+                      <label class="form-check-label" for="respuestaChat">Chat</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="metodoRespuesta" id="respuestaFormulario" value="formulario" required>
+                      <label class="form-check-label" for="respuestaFormulario">Formulario</label>
+                    </div>
+                  </div>
+
+                  <div class="col-12 d-flex flex-wrap gap-2">
+                    <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+                    <button type="reset" class="btn btn-secondary">Limpiar</button>
+                  </div>
+                </form>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="vistaContacto" class="content-view d-none">
+          <div class="row justify-content-center align-items-stretch g-4">
+            <div class="col-12 col-xl-7">
+              <section class="contact-card p-4 p-lg-5 h-100">
+                <h2 class="mb-3">Ubicacion Institucional</h2>
+                <p class="contact-text mb-4">
+                  Puedes visitarnos en nuestro campus principal para atencion presencial administrativa y academica.
+                </p>
+                <div class="ratio ratio-16x9 map-frame rounded-4 overflow-hidden">
+                  <iframe
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-68.1405%2C-16.5143%2C-68.1026%2C-16.4860&amp;layer=mapnik"
+                    title="Mapa de ubicacion institucional"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+              </section>
+            </div>
+
+            <div class="col-12 col-xl-5">
+              <section class="contact-card p-4 p-lg-5 h-100">
+                <h2 class="mb-3">Canales de Contacto</h2>
+                <p class="contact-text mb-4">
+                  Escríbenos por correo, llámanos directamente o síguenos en redes sociales para recibir noticias y soporte.
+                </p>
+
+                <div class="contact-block mb-3">
+                  <h6>Correos institucionales</h6>
+                  <p class="mb-1">info@itpm.edu.bo</p>
+                  <p class="mb-0">soporte@itpm.edu.bo</p>
+                </div>
+
+                <div class="contact-block mb-3">
+                  <h6>Telefonos</h6>
+                  <p class="mb-1">+591 2 245-7788</p>
+                  <p class="mb-0">+591 700-12345</p>
+                </div>
+
+                <div class="contact-block">
+                  <h6>Redes sociales</h6>
+                  <div class="d-flex flex-wrap gap-2 mt-2">
+                    <a class="social-badge" href="#" aria-label="Facebook ITPM"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+                    <a class="social-badge" href="#" aria-label="Instagram ITPM"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+                    <a class="social-badge" href="#" aria-label="LinkedIn ITPM"><i class="bi bi-linkedin" aria-hidden="true"></i></a>
+                    <a class="social-badge" href="#" aria-label="YouTube ITPM"><i class="bi bi-youtube" aria-hidden="true"></i></a>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
 
@@ -118,6 +267,8 @@
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/validaciones.js"></script>
 
 </body>
 </html>
